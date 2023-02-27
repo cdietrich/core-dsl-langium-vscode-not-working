@@ -10,17 +10,27 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "core-dsl-langium",
-            "aliases": ["Core DSL Langium", "core-dsl-langium"],
-            "extensions": [".core_desc"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "core-dsl-langium",
-            "scopeName": "source.core-dsl-langium",
-            "path": "./syntaxes/core-dsl-langium.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "core-dsl-langium",
+                "aliases": [
+                    "Core DSL Langium",
+                    "core-dsl-langium"
+                ],
+                "extensions": [
+                    ".core_desc",
+                    ".cd"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "core-dsl-langium",
+                "scopeName": "source.core-dsl-langium",
+                "path": "./syntaxes/core-dsl-langium.tmLanguage.json"
+            }
+        ]
     },
     "activationEvents": [
         "onLanguage:core-dsl-langium"
@@ -40,11 +50,12 @@
         "watch": "tsc -b tsconfig.json --watch",
         "lint": "eslint src --ext ts",
         "langium:generate": "langium generate",
-        "langium:watch": "langium generate --watch"
+        "langium:watch": "langium generate --watch",
+        "test": "vitest"
     },
     "dependencies": {
-        "chevrotain": "~10.4.2",
         "chalk": "~4.1.2",
+        "chevrotain": "~10.4.2",
         "commander": "~10.0.0",
         "langium": "~1.1.0",
         "vscode-languageclient": "~8.0.2",
@@ -58,6 +69,7 @@
         "@typescript-eslint/parser": "~5.51.0",
         "eslint": "~8.33.0",
         "langium-cli": "~1.1.0",
-        "typescript": "~4.9.5"
+        "typescript": "~4.9.5",
+        "vitest": "^0.27.3"
     }
 }

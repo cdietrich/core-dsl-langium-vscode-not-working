@@ -9,6 +9,23 @@ import { NodeFileSystem } from 'langium/node';
 
 export const generateAction = async (fileName: string, opts: GenerateOptions): Promise<void> => {
     const services = createCoreDslLangiumServices(NodeFileSystem).CoreDslLangium;
+    const lexer = services.parser.Lexer
+    // const m = `InstructionSet X_LUM extends RISCVBase {
+    //     instructions {
+    //       LUMINANCE {
+    //         encoding: 7'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0010111;
+    //         behavior: {
+      
+    //         }
+    //       }
+    //     }
+    //   }`
+    const m = `0x66`
+    //const m = "4"
+    const res = lexer.tokenize(m)
+      console.log(res)
+
+
     const model = await extractAstNode<DescriptionContent>(fileName, services);
     const generatedFilePath = generateJavaScript(model, fileName, opts.destination);
     console.log(chalk.green(`JavaScript code generated successfully: ${generatedFilePath}`));
