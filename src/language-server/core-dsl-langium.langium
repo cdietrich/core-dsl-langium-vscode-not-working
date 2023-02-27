@@ -298,13 +298,13 @@ terminal ID : /\^?[a-zA-Z_][a-zA-Z0-9_]*/;
 
 // do we need to override the built-in STRING rule?
 
-terminal ENCSTRINGCONST	:	 /(u8|u|U|L)"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
+terminal ENCSTRINGCONST	:	 /(u8|u|U|L)("(\\.|[^"\\])*"|'(\\.|[^'\\])*')/;
     //('u8'|'u'|'U'|'L') '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"';
 
 hidden terminal WS: /\s+/;
 //terminal ID: /[_a-zA-Z][\w_]*/;
 //terminal INT returns number: /[0-9]+/;
-terminal STRING: /"(\\.|[^"\\])*"/;
+terminal STRING: /"(\\.|[^"\\])*"|'(\\.|[^'\\])*'/;
 
 hidden terminal ML_COMMENT: /\/\*[\s\S]*?\*\//;
 hidden terminal SL_COMMENT: /\/\/[^\n\r]*/;
