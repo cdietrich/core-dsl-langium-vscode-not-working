@@ -20,11 +20,13 @@ export const generateAction = async (fileName: string, opts: GenerateOptions): P
     //       }
     //     }
     //   }`
-    const m = `0x66`
+    const m = `import 'aa'`
     //const m = "4"
     const res = lexer.tokenize(m)
       console.log(res)
-
+      for (var val of res.tokens) {
+        console.log(val.tokenType.name)
+      }
 
     const model = await extractAstNode<DescriptionContent>(fileName, services);
     const generatedFilePath = generateJavaScript(model, fileName, opts.destination);
